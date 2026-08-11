@@ -1,0 +1,51 @@
+{
+  "presets": {
+    "host-alive": {
+      "commands": [
+        {
+          "name": "root-fs",
+          "argv": ["test", "-d", "/"]
+        },
+        {
+          "name": "is-linux",
+          "cmd": "uname -s",
+          "expect_stdout": "Linux",
+          "timeout": 2
+        }
+      ]
+    },
+    "disk-root": {
+      "commands": [
+        {
+          "name": "root-under-90pct",
+          "cmd": "python3 -c \"import shutil;u=shutil.disk_usage('/');raise SystemExit(0 if (u.used/u.total)<0.90 else 1)\"",
+          "timeout": 5
+        }
+      ]
+    },
+    "basic-host": {
+      "commands": [
+        {
+          "name": "load-ok",
+          "cmd": "python3 -c \"load=float(open('/proc/loadavg').read().split()[0]); raise SystemExit(0 if load < 20 else 1)\"",
+          "timeout": 2
+        },
+        {
+          "name": "root-under-90pct",
+          "cmd": "python3 -c \"import shutil;u=shutil.disk_usage('/');raise SystemExit(0 if (u.used/u.total)<0.90 else 1)\"",
+          "timeout": 5
+        }
+      ]
+    },
+    "nginx": {
+      "commands": [
+        {
+          "name": "nginx-active",
+          "cmd": "systemctl is-active nginx",
+          "expect_stdout": "active",
+          "timeout": 5
+        }
+      ]
+    }
+  }
+}
