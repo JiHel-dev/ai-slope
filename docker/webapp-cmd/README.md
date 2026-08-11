@@ -132,10 +132,22 @@ This service runs shell commands on the host. Treat it like root-capable remote 
 - Prefer `argv` over `cmd` when you do not need a shell
 - Bind to localhost / private network and put a reverse proxy in front if exposed
 
-## Docker
+## Docker Compose
 
 ```bash
-docker build -t cmd-kuma-check .
+cp config.example.json config.json
+echo 'AUTH_TOKEN=change-me' > .env
+docker compose up -d --build
+```
+
+Presets are loaded from `./config.json`. Override port with `PORT=9090` in `.env` if needed.
+
+To check **host** services (`systemctl`, host disks via special mounts, etc.), uncomment `network_mode: host` / `pid: host` in `docker-compose.yml`.
+
+### Plain Docker
+
+```bash
+docker build -t webapp-cmd .
 docker run --rm -p 8080:8080 \
   -e AUTH_TOKEN=change-me \
   -v "$PWD/config.json:/app/config.json:ro" \
