@@ -23,6 +23,15 @@
         }
       ]
     },
+    "swap-under-10pct": {
+      "commands": [
+        {
+          "name": "swap-under-10pct",
+          "cmd": "python3 -c \"d=dict(l.split()[:2] for l in open('/proc/meminfo')); t=int(d['SwapTotal:']); u=t-int(d['SwapFree:']); raise SystemExit(0 if t==0 or u/t<0.10 else 1)\"",
+          "timeout": 5
+        }
+      ]
+    },
     "basic-host": {
       "commands": [
         {

@@ -1,8 +1,8 @@
 services:
-  cmd-kuma-check:
+  webapp-cmd:
     build: .
-    image: cmd-kuma-check:local
-    container_name: cmd-kuma-check
+    image: webapp-cmd:local
+    container_name: webapp-cmd
     ports:
       - "${PORT:-8080}:8080"
     environment:
