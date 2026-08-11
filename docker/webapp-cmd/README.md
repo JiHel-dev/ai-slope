@@ -38,10 +38,37 @@ Every check returns JSON like:
 
 For POST monitors, set method to POST and body to your command JSON.
 
+## Auth token
+
+Generate a random secret and put it in the environment (or `.env` for Compose):
+
+```bash
+# openssl (common on servers)
+openssl rand -hex 32
+
+# or Python
+python3 -c 'import secrets; print(secrets.token_urlsafe(32))'
+```
+
+Use it as `AUTH_TOKEN`. Clients send either:
+
+- `Authorization: Bearer <token>`
+- `X-API-Key: <token>`
+
+Example:
+
+```bash
+export AUTH_TOKEN="$(openssl rand -hex 32)"
+# Compose:
+# echo "AUTH_TOKEN=$AUTH_TOKEN" > .env
+```
+
+If `AUTH_TOKEN` is unset, the API is open (a warning is printed on startup). Always set one outside local experiments.
+
 ## Quick start
 
 ```bash
-export AUTH_TOKEN=change-me
+export AUTH_TOKEN="$(openssl rand -hex 32)"
 cp config.example.json config.json
 python3 app.py
 ```
@@ -51,11 +78,11 @@ python3 app.py
 curl -s http://127.0.0.1:8080/health
 
 # Preset
-curl -s -H "Authorization: Bearer change-me" \
+curl -s -H "Authorization: Bearer $AUTH_TOKEN" \
   http://127.0.0.1:8080/preset/disk-root
 
 # Ad-hoc commands
-curl -s -H "Authorization: Bearer change-me" \
+curl -s -H "Authorization: Bearer $AUTH_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
     "commands": [
@@ -136,7 +163,7 @@ This service runs shell commands on the host. Treat it like root-capable remote 
 
 ```bash
 cp config.example.json config.json
-echo 'AUTH_TOKEN=change-me' > .env
+echo "AUTH_TOKEN=$(openssl rand -hex 32)" > .env
 docker compose up -d --build
 ```
 
@@ -147,9 +174,9 @@ To check **host** services (`systemctl`, host disks via special mounts, etc.), u
 ### Plain Docker
 
 ```bash
-docker build -t webapp-cmd .
+docker build -t cmd-kuma-check .
 docker run --rm -p 8080:8080 \
-  -e AUTH_TOKEN=change-me \
+  -e AUTH_TOKEN="$(openssl rand -hex 32)" \
   -v "$PWD/config.json:/app/config.json:ro" \
   cmd-kuma-check
 ```
