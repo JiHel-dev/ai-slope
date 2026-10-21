@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Pokédex</string>
+    <string name="device_admin_description">Permet de verrouiller le téléphone sur le Pokédex (mode kiosque).</string>
+
+    <string name="button_recognize">RECONNAÎTRE UN POKÉMON</string>
+    <string name="button_replay">RÉÉCOUTER</string>
+
+    <string name="state_loading">Le Pokédex se prépare…</string>
+    <string name="state_idle">Appuie sur le bouton\net dis le nom d\'un Pokémon !</string>
+    <string name="state_listening">Je t\'écoute…</string>
+    <string name="state_processing">Recherche du Pokémon…</string>
+    <string name="state_playing">J\'écoute la description</string>
+    <string name="failure_not_understood">Je n\'ai pas compris.\nRéessaie !</string>
+    <string name="failure_ambiguous">Je ne suis pas sûr.\nRépète le nom !</string>
+    <string name="failure_silence">Je n\'ai rien entendu.\nParle plus fort !</string>
+    <string name="failure_microphone">Le micro ne marche pas.\nDemande à un adulte.</string>
+    <string name="mic_permission_needed">Le micro n\'est pas autorisé.\nDemande à un adulte.</string>
+    <string name="unavailable_title">Le Pokédex ne peut pas démarrer.\nDemande à un adulte.</string>
+
+    <string name="pin_title">Code parental</string>
+    <string name="pin_new_title">Nouveau code (4 à 8 chiffres)</string>
+    <string name="pin_confirm_title">Confirme le nouveau code</string>
+    <string name="pin_wrong">Code incorrect</string>
+    <string name="pin_mismatch">Les deux codes sont différents</string>
+    <string name="pin_invalid">Le code doit faire 4 à 8 chiffres</string>
+    <string name="pin_locked">Trop d\'essais. Réessaie dans %1$d s.</string>
+    <string name="pin_cancel">Annuler</string>
+
+    <string name="parental_title">Espace parent</string>
+    <string name="parental_default_pin">Le code est encore celui par défaut (1234). Change-le.</string>
+    <string name="parental_section_kiosk">Mode kiosque</string>
+    <string name="parental_kiosk_managed">Géré (Device Owner) : verrouillage robuste, démarrage automatique</string>
+    <string name="parental_kiosk_pinning">Épinglage d\'écran : moins robuste, l\'enfant peut en sortir. Voir le README pour activer le mode géré.</string>
+    <string name="parental_kiosk_locked">Verrouillage actif : %1$s</string>
+    <string name="parental_section_data">Fiches</string>
+    <string name="parental_data_summary">%1$d fiches, %2$d images manquantes, %3$d descriptions audio manquantes</string>
+    <string name="parental_data_missing">Manquants : %1$s</string>
+    <string name="parental_engine_ok">Reconnaissance vocale prête</string>
+    <string name="parental_engine_error">Reconnaissance vocale indisponible : %1$s</string>
+    <string name="parental_section_mic">Micro</string>
+    <string name="parental_mic_granted">Autorisé</string>
+    <string name="parental_mic_denied">Non autorisé</string>
+    <string name="parental_mic_request">Autoriser le micro</string>
+    <string name="parental_section_recognition">Reconnaissance</string>
+    <string name="parental_mode_grammar">Liste des noms (recommandé)</string>
+    <string name="parental_mode_free">Dictée libre (essais)</string>
+    <string name="parental_section_actions">Maintenance</string>
+    <string name="parental_maintenance_start">Déverrouiller temporairement</string>
+    <string name="parental_maintenance_on">Déverrouillé : le kiosque reprend à la fermeture de cet écran.</string>
+    <string name="parental_open_settings">Ouvrir les paramètres Android</string>
+    <string name="parental_open_app_settings">Ouvrir les réglages de l\'application</string>
+    <string name="parental_change_pin">Changer le code</string>
+    <string name="parental_reload">Recharger les fiches</string>
+    <string name="parental_remove_owner">Retirer le mode administrateur</string>
+    <string name="parental_remove_owner_confirm">Le téléphone redeviendra normal et le Pokédex ne sera plus verrouillé. Appuie encore pour confirmer.</string>
+    <string name="parental_close">Fermer et revenir au Pokédex</string>
+    <string name="yes">Oui</string>
+    <string name="no">Non</string>
+</resources>
