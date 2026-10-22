@@ -1,0 +1,3 @@
+Le Pokémon Balle.
+De type Électrik.
+Il stocke de l’énergie électrique dans son corps, ce qui le rend instable et explosif.
